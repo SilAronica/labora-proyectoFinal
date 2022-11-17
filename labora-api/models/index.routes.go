@@ -6,5 +6,5 @@ import (
 )
 
 func HomeLink(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Welcome home!")
+	fmt.Fprintf(w, "Bienvenido!")
 }

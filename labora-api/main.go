@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-
 	"github.com/SilAronica/Labora-API.git/models"
 	"github.com/gorilla/mux"
 )
