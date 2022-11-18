@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func post(w http.ResponseWriter, r *http.Request) {
+func CreateEventSearch(w http.ResponseWriter, r *http.Request) {
 
 	url := "http://api.checks.truora.com/v1/checks"
 
@@ -40,9 +40,10 @@ func post(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(string(body))
 }
 
-func get(w http.ResponseWriter, r *http.Request) {
+func GetEvent(w http.ResponseWriter, r *http.Request) {
 
 	url := "https://api.checks.truora.com/v1/checks/CHK00734f349df8c14682adc321428a3075"
+
 	method := "GET"
 
 	client := &http.Client{}
