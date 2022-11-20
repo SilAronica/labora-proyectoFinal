@@ -5,17 +5,23 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
+
+	"github.com/SilAronica/labora-proyectoFinal.git/services"
 )
 
 func CreateEventSearch(w http.ResponseWriter, r *http.Request) {
-
 	url := "http://api.checks.truora.com/v1/checks"
+
+	dniFromBody := "2838428283737"
+
+	stringUrl := fmt.Sprintf("national_id=%s&country=CO&type=person&user_authorized=true&force_creation=true", dniFromBody)
 
 	method := "POST"
 
-	payload := strings.NewReader("national_id=81544670&country=CO&type=person&user_authorized=true&force_creation=true")
+	payload := strings.NewReader(stringUrl)
 
 	client := &http.Client{}
+
 	req, err := http.NewRequest(method, url, payload)
 
 	if err != nil {
@@ -36,7 +42,9 @@ func CreateEventSearch(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 		return
+
 	}
+	services.InsertLogInDb(dniFromBody)
 	fmt.Println(string(body))
 }
 
@@ -67,5 +75,6 @@ func GetEvent(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 		return
 	}
+
 	fmt.Println(string(body))
 }
